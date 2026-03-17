@@ -4,4 +4,4 @@ services:
     restart: on-failure
     env_file: .env
     volumes:
-      - ./data/server-configs.json:/usr/src/app/data/server-configs.json:rw
+      - /home/summerwya/test/server-configs.json:/usr/src/app/data/server-configs.json:rw
