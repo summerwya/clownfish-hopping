@@ -15,9 +15,11 @@ COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 
 FROM base AS release
-COPY --chown=bun:bun --from=install /temp/prod/node_modules node_modules
-COPY --chown=bun:bun --from=prerelease /usr/src/app/package.json .
-COPY --chown=bun:bun --from=prerelease /usr/src/app/ .
+COPY --from=install /temp/prod/node_modules node_modules
+COPY --from=prerelease /usr/src/app/package.json .
+COPY --from=prerelease /usr/src/app/ .
+
+RUN chown -R bun:bun /usr/src/app
 
 USER bun
 ENTRYPOINT [ "bun", "run", "start" ]
