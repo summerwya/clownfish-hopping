@@ -4,4 +4,4 @@ services:
     restart: on-failure
     env_file: .env
     volumes:
-      - /home/summerwya/docker/clownfish/server-configs.json:/usr/src/app/data/server-configs.json:rw
+      - ./data:/usr/src/app/data:rw
