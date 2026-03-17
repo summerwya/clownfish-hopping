@@ -19,7 +19,10 @@ COPY --from=install /temp/prod/node_modules node_modules
 COPY --from=prerelease /usr/src/app/package.json .
 COPY --from=prerelease /usr/src/app/ .
 
+RUN chown bun:bun /usr/src/app
+RUN chown bun:bun /usr/src/app/data
 RUN echo "{}" > /usr/src/app/data/server-configs.json
+RUN chown bun:bun /usr/src/app/data/server-configs.json
 
 USER bun
 ENTRYPOINT [ "bun", "run", "start" ]
