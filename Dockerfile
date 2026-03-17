@@ -19,7 +19,5 @@ COPY --chown=bun:bun --from=install /temp/prod/node_modules node_modules
 COPY --chown=bun:bun --from=prerelease /usr/src/app/package.json .
 COPY --chown=bun:bun --from=prerelease /usr/src/app/ .
 
-RUN echo "{}" > /usr/src/app/data/server-configs.json
-
 USER bun
 ENTRYPOINT [ "bun", "run", "start" ]
